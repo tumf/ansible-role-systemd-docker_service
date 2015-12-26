@@ -12,7 +12,7 @@ galaxy_info:
   categories:
   - system
   dependencies:
-  - role: systemd/service
+  - role: systemd-service
     systemd_service_Unit_Requires: docker.service
     systemd_service_Unit_After: docker.service
     systemd_service_Service_ExecStartPre:
