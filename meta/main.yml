@@ -11,4 +11,5 @@ galaxy_info:
     - wily
   categories:
   - system
-  dependencies: [ systemd-service ]
+  dependencies:
+    - { role: systemd-service }
