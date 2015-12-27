@@ -3,38 +3,54 @@
 systemd-docker_service - Ansible role
 =========
 
-A brief description of the role goes here.
+Register docker containers as systemd daemons.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
-
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+|name|type|default|description
+|----|----|-------|-----------
+|systemd_docker_service_image*|String||image of container
+|systemd_docker_service_command|String|""|command
+|systemd_docker_service_ports|Array|[]|publish ports e.g.["80:80","443":"443"]
+
+> * required
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+* tumf.systemd-service
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
-    - hosts: servers
+    - hosts: 127.0.0.1
+      connection: local
+      tags:
+        - swarm-manager
+      vars:
+        ansible_unit_test: True
       roles:
-         - { role: username.rolename, x: 42 }
+        - role: ../..
+          systemd_service_name: "swarm-manager"
+          systemd_service_envs:
+              - "DOCKER_HOST=tcp://127.0.0.1:2375"
+          systemd_docker_service_image: "swarm"
+          systemd_docker_service_command: |
+            manage --replication --advertise=127.0.0.1:2375
+          systemd_docker_service_ports:
+            - "2377:2375"
 
 License
 -------
 
-BSD
+MIT
 
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+> @tumf
+
