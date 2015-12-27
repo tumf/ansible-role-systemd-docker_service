@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/tumf/ansible-role-systemd-docker_service.svg?branch=master)](https://travis-ci.org/tumf/ansible-role-systemd-docker_service)
-[![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-systemd--docker_service-blue.svg)](https://galaxy.ansible.com/list#/roles/6664)
+[![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-systemd--docker_service-blue.svg)](https://galaxy.ansible.com/list#/roles/6665)
 
 
 systemd-docker_service - Ansible role
