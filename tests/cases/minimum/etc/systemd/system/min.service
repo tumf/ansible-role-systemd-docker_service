@@ -1,0 +1,15 @@
+[Unit]
+Description=min Service
+Requires=docker.service
+After=docker.service
+
+[Service]
+Type=simple
+EnvironmentFile=-/etc/default/min
+ExecStartPre=-/usr/bin/docker stop "min"
+ExecStartPre=-/usr/bin/docker rm  "min"
+ExecStartPre=/usr/bin/docker pull "min-image"
+ExecStart=/usr/bin/docker run  --name min min-image min-command
+
+[Install]
+WantedBy=multi-user.target

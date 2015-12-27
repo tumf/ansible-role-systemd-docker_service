@@ -1,0 +1,4 @@
+---
+- src: https://github.com/tumf/ansible-role-systemd-service
+  version: master
+  name: systemd-service

@@ -1,0 +1,30 @@
+---
+
+- hosts: 127.0.0.1
+  connection: local
+  tags:
+    - minimum
+  vars:
+    ansible_unit_test: True
+  roles:
+    - role: systemd-docker_service
+      systemd_service_name: "min"
+      systemd_docker_service_image: "min-image"
+      systemd_docker_service_command: "min-command"
+
+- hosts: 127.0.0.1
+  connection: local
+  tags:
+    - swarm-manager
+  vars:
+    ansible_unit_test: True
+  roles:
+    - role: systemd-docker_service
+      systemd_service_name: "swarm-manager"
+      systemd_service_envs:
+          - "DOCKER_HOST=tcp://127.0.0.1:2375"
+      systemd_docker_service_image: "swarm"
+      systemd_docker_service_command: |
+        manage --replication --advertise=127.0.0.1:2375
+      systemd_docker_service_ports:
+        - "2377:2375"

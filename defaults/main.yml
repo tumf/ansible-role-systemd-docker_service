@@ -1,2 +1,10 @@
 ---
 # defaults file for roles/systemd/docker_service
+systemd_service_Unit_Requires: docker.service
+systemd_service_Unit_After: docker.service
+systemd_service_Service_ExecStartPre:
+    - -/usr/bin/docker stop "{{ systemd_service_name }}"
+    - -/usr/bin/docker rm  "{{ systemd_service_name }}"
+    - /usr/bin/docker pull "{{ systemd_docker_service_image }}"
+systemd_service_Service_ExecStart: |
+    /usr/bin/docker run {% if systemd_docker_service_ports is defined %}{% for port in systemd_docker_service_ports %}-p {{ port }} {% endfor %}{% endif %} --name {{ systemd_service_name }} {{ systemd_docker_service_image }} {{ systemd_docker_service_command }}
