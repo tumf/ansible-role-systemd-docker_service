@@ -1,4 +1,6 @@
-Role Name
+[![Build Status](https://travis-ci.org/tumf/ansible-role-systemd-docker_service.svg?branch=master)](https://travis-ci.org/tumf/ansible-role-systemd-docker_service)
+
+systemd-docker_service - Ansible role
 =========
 
 A brief description of the role goes here.
