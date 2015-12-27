@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: tumf
-  description:
+  description: Register docker containers as systemd daemons.
   issue_tracker_url: https://github.com/tumf/ansible-role-systemd-docker_service/issues
   license: MIT
   min_ansible_version: 1.2
