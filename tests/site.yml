@@ -10,7 +10,6 @@
     - role: ../..
       systemd_service_name: "min"
       systemd_docker_service_image: "min-image"
-      systemd_docker_service_command: "min-command"
 
 - hosts: 127.0.0.1
   connection: local

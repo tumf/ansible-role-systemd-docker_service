@@ -1,5 +1,6 @@
 ---
 # defaults file for roles/systemd/docker_service
+systemd_docker_service_command: ""
 systemd_service_Unit_Requires: docker.service
 systemd_service_Unit_After: docker.service
 systemd_service_Service_ExecStartPre:

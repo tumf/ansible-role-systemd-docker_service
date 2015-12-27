@@ -9,7 +9,7 @@ EnvironmentFile=-/etc/default/min
 ExecStartPre=-/usr/bin/docker stop "min"
 ExecStartPre=-/usr/bin/docker rm  "min"
 ExecStartPre=/usr/bin/docker pull "min-image"
-ExecStart=/usr/bin/docker run  --name min min-image min-command
+ExecStart=/usr/bin/docker run  --name min min-image 
 
 [Install]
 WantedBy=multi-user.target
